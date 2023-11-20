@@ -35,6 +35,32 @@ return {
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
+    ["<leader>tw"] = {
+      "<cmd>lua require('neotest').run.run({ jestCommand = 'jest --watch ' })<cr>",
+      desc = "Test watch"
+    },
+    ["<leader>tt"] = {
+      function()
+        require("neotest").run.run()
+      end,
+      desc = "Run nearest test",
+    },
+    ["<leader>tf"] = {
+      function()
+        require("neotest").run.run(vim.fn.expand "%")
+      end,
+      desc = "Run file test",
+    },
+
+    ["<leader>to"] = {
+      ":Neotest output<CR>",
+      desc = "Test output",
+    },
+
+    ["<leader>ts"] = {
+      ":Neotest summary<CR>",
+      desc = "Test summary",
+    },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
   },

@@ -3,7 +3,7 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim", enabled = true },
   { import = "astrocommunity.colorscheme.catppuccin" },
-  -- { import = "astrocommunity.test.neotest", enabled = true },
+  { import = "astrocommunity.test.neotest", enabled = true },
   { 
     import = "astrocommunity.git.diffview-nvim", 
     enabled = true,
