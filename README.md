@@ -34,3 +34,36 @@ git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim/lua/us
 ```shell
 nvim
 ```
+
+#### Install neotest and neotest jest
+
+~/.local/share/nvim/lazy/astrocommunity/lua/astrocommunity/test/neotest/init.lua
+
+```lua
+return {
+  {
+    "nvim-neotest/neotest",
+    event = "VeryLazy",
+    config = function()
+      require("neotest").setup {
+        adapters = {
+          require "neotest-jest" {
+            jestCommand = "npm test --",
+            jestConfigFile = "jest.config.js",
+            env = { CI = true },
+            cwd = function(path)
+              return vim.fn.getcwd()
+            end,
+          },
+        },
+      }
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      "haydenmeade/neotest-jest",
+    },
+  }
+}
+```
